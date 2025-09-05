@@ -163,11 +163,11 @@ p {
 /* Hero Section */
 .hero {
     margin-top: 80px;
-    padding: 80px 20px;
+    padding: 50px 20px;
     background: linear-gradient(135deg, var(--sage-green-pale) 0%, var(--sage-green-light) 100%);
     display: flex;
     align-items: center;
-    min-height: 70vh;
+    min-height: 50vh;
 }
 
 .hero-content {
@@ -279,6 +279,10 @@ section {
     grid-template-columns: 2fr 1fr;
     gap: 4rem;
     align-items: start;
+}
+
+.about-text {
+    text-align: center;
 }
 
 .about-text h3 {
@@ -467,7 +471,7 @@ section {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 60px 20px;
+        padding: 40px 20px;
     }
     
     .hero h1 {
