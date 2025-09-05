@@ -114,27 +114,49 @@
                         <div class="menu-category">
                             <h4>Breakfast</h4>
                             <div class="menu-items">
-                                <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Breakfast Platter" data-price="10.00">
+                                <div class="menu-item">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Breakfast Platter</span>
                                             <span class="item-price">$10.00</span>
                                         </div>
                                         <p class="item-description">Two eggs (scrambled or over), choice of meat, toast, and potatoes</p>
+                                        <div class="quantity-controls">
+                                            <label>Qty:</label>
+                                            <input type="number" name="qty-Breakfast Platter" min="0" max="10" value="0" data-price="10.00" class="quantity-input">
+                                        </div>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <span>Add Extra Meat (+$3.00)</span>
+                                                <input type="number" name="addon-Breakfast Platter-Extra Meat" min="0" max="5" value="0" data-price="3.00" class="addon-quantity">
+                                            </label>
+                                        </div>
                                     </div>
-                                </label>
+                                </div>
                                 
-                                <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Breakfast Sandwich" data-price="7.00">
+                                <div class="menu-item">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Breakfast Sandwich</span>
                                             <span class="item-price">$7.00</span>
                                         </div>
-                                        <p class="item-description">Egg, choice of meat, and cheese</p>
+                                        <p class="item-description">Egg, choice of meat, and cheese on your choice of bread</p>
+                                        <div class="quantity-controls">
+                                            <label>Qty:</label>
+                                            <input type="number" name="qty-Breakfast Sandwich" min="0" max="10" value="0" data-price="7.00" class="quantity-input">
+                                        </div>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <span>Add Bacon (+$2.00)</span>
+                                                <input type="number" name="addon-Breakfast Sandwich-Bacon" min="0" max="3" value="0" data-price="2.00" class="addon-quantity">
+                                            </label>
+                                            <label class="option-item">
+                                                <span>Add Avocado (+$1.50)</span>
+                                                <input type="number" name="addon-Breakfast Sandwich-Avocado" min="0" max="2" value="0" data-price="1.50" class="addon-quantity">
+                                            </label>
+                                        </div>
                                     </div>
-                                </label>
+                                </div>
 
                                 <label class="menu-item">
                                     <input type="checkbox" name="menuItems" value="French Toast" data-price="7.00">

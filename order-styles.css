@@ -193,22 +193,50 @@
 }
 
 .menu-item {
-    display: flex;
-    align-items: flex-start;
-    padding: 1.5rem;
-    background-color: white;
-    border-radius: 12px;
-    cursor: pointer;
+    background-color: var(--warm-white);
+    border: 2px solid var(--sage-green-light);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
     transition: all 0.3s ease;
-    border: 2px solid #e8e8e8;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .menu-item:hover {
-    background-color: var(--sage-green-pale);
+    border-color: var(--sage-green);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    border-color: var(--sage-green-light);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: var(--sage-green-pale);
+    border-radius: 8px;
+}
+
+.quantity-controls label {
+    font-weight: 600;
+    color: var(--sage-green-dark);
+}
+
+.quantity-input, .addon-quantity {
+    width: 60px;
+    padding: 0.5rem;
+    border: 2px solid var(--sage-green-light);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    background-color: white;
+}
+
+.quantity-input:focus, .addon-quantity:focus {
+    outline: none;
+    border-color: var(--sage-green);
+    box-shadow: 0 0 0 3px rgba(168, 197, 176, 0.2);
 }
 
 .menu-item input[type="checkbox"] {
@@ -356,26 +384,32 @@
 
 /* Item Options Styles */
 .item-options {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e8e8e8;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid var(--sage-green-light);
 }
 
 .option-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    font-size: 0.95rem;
-    color: var(--sage-green-dark);
-    font-weight: 500;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
 }
 
-.option-item input[type="checkbox"] {
-    margin-right: 0.8rem;
-    width: 16px;
-    height: 16px;
-    accent-color: var(--sage-green);
+.option-item:last-child {
+    margin-bottom: 0;
+}
+
+.option-item span {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 500;
 }
 
 .option-item:hover {

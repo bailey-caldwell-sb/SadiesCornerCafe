@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
     const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
     const deliverySection = document.getElementById('deliveryAddress');
-    const menuItems = document.querySelectorAll('input[name="menuItems"]');
-    const addonItems = document.querySelectorAll('input[name*="-addons"]');
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    const addonQuantities = document.querySelectorAll('.addon-quantity');
     const submitBtn = document.querySelector('.submit-btn');
     const subtotalEl = document.getElementById('subtotal');
     const taxEl = document.getElementById('tax');
@@ -42,27 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle menu item selection visual feedback and calculations
-    menuItems.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const menuItem = this.closest('.menu-item');
-            if (this.checked) {
-                menuItem.classList.add('selected');
-            } else {
-                menuItem.classList.remove('selected');
-                // Uncheck all addon items for this menu item
-                const addonCheckboxes = menuItem.querySelectorAll('input[name*="-addons"]');
-                addonCheckboxes.forEach(addon => {
-                    addon.checked = false;
-                });
-            }
+    // Handle quantity input changes
+    quantityInputs.forEach(input => {
+        input.addEventListener('input', function() {
             updateOrderSummary();
         });
     });
     
-    // Handle addon item selection
-    addonItems.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
+    // Handle addon quantity changes
+    addonQuantities.forEach(input => {
+        input.addEventListener('input', function() {
             updateOrderSummary();
         });
     });
@@ -71,19 +60,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateOrderSummary() {
         let subtotal = 0;
         
-        // Calculate subtotal from selected menu items
-        menuItems.forEach(checkbox => {
-            if (checkbox.checked) {
-                const price = parseFloat(checkbox.dataset.price || 0);
-                subtotal += price;
-                
-                // Add addon prices for this item
-                const menuItem = checkbox.closest('.menu-item');
-                const addonCheckboxes = menuItem.querySelectorAll('input[name*="-addons"]:checked');
-                addonCheckboxes.forEach(addon => {
-                    const addonPrice = parseFloat(addon.dataset.price || 0);
-                    subtotal += addonPrice;
-                });
+        // Calculate subtotal from quantity inputs
+        quantityInputs.forEach(input => {
+            const quantity = parseInt(input.value) || 0;
+            if (quantity > 0) {
+                const price = parseFloat(input.dataset.price || 0);
+                subtotal += price * quantity;
+            }
+        });
+        
+        // Calculate addon prices
+        addonQuantities.forEach(input => {
+            const quantity = parseInt(input.value) || 0;
+            if (quantity > 0) {
+                const price = parseFloat(input.dataset.price || 0);
+                subtotal += price * quantity;
             }
         });
         
