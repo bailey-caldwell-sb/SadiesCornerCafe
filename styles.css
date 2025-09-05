@@ -392,6 +392,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+    align-items: start;
 }
 
 .contact-info {
@@ -408,17 +409,41 @@ section {
 }
 
 .info-item h4 {
-    margin-bottom: 1rem;
-    color: var(--sage-green-dark);
+    margin-bottom: 0.5rem;
+    color: var(--sage-green);
+}
+
+.info-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .info-item a {
-    color: var(--sage-green-dark);
+    color: var(--sage-green);
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .info-item a:hover {
     text-decoration: underline;
+}
+
+.facebook-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #1877f2;
+    color: white !important;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.facebook-link:hover {
+    background-color: #166fe5 !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .map-container {
