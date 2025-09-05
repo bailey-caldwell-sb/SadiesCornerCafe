@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const taxEl = document.getElementById('tax');
     const totalEl = document.getElementById('total');
     
-    const TAX_RATE = 0.085; // 8.5% tax rate for South Carolina
+    const TAX_RATE = 0.115; // 11.5% tax rate for South Carolina
 
     // Handle order type change (pickup vs delivery)
     orderTypeRadios.forEach(radio => {
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Prepare email content
         const emailContent = {
-            to_email: 'bailey.caldwell@gmail.com',
+            to_email: 'sadiescornercafe@gmail.com',
             from_name: orderData.customerName,
             customer_name: orderData.customerName,
             customer_phone: orderData.customerPhone,
@@ -224,14 +224,14 @@ Special Instructions: ${emailContent.special_instructions}
 
 Order Summary:
 Subtotal: ${emailContent.subtotal}
-Tax (8.5%): ${emailContent.tax}
+Tax (11.5%): ${emailContent.tax}
 Total: ${emailContent.order_total}
 
 Order Date: ${emailContent.order_date} at ${emailContent.order_time}
         `);
         
         // Create a hidden mailto link and click it
-        const mailtoLink = `mailto:bailey.caldwell@gmail.com?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:sadiescornercafe@gmail.com?subject=${subject}&body=${body}`;
         const tempLink = document.createElement('a');
         tempLink.href = mailtoLink;
         tempLink.style.display = 'none';
@@ -275,7 +275,7 @@ function initEmailJS() {
 
 function sendEmailViaEmailJS(orderData) {
     const templateParams = {
-        to_email: 'bailey.caldwell@gmail.com',
+        to_email: 'sadiescornercafe@gmail.com',
         from_name: orderData.customerName,
         customer_name: orderData.customerName,
         customer_phone: orderData.customerPhone,
