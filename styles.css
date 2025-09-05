@@ -279,6 +279,7 @@ section {
 
 .team-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
@@ -305,16 +306,79 @@ section {
 /* Menu Section */
 .menu-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+/* Haphazard menu layout styles */
+.menu-category.rotated {
+    transform: rotate(-2deg);
+    margin-top: 2rem;
+}
+
+.menu-category.tilted {
+    transform: rotate(1.5deg);
+    margin-bottom: 1.5rem;
+}
+
+.menu-category.offset {
+    margin-left: 2rem;
+    transform: translateY(-1rem);
+}
+
+.menu-category.scattered {
+    transform: rotate(-1deg) translateX(1rem);
+    margin-top: -1rem;
 }
 
 .menu-category {
     background-color: var(--warm-white);
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border: 3px solid var(--sage-green-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-category:hover {
+    transform: scale(1.02) rotate(0deg) !important;
+    box-shadow: 0 15px 40px rgba(168, 197, 176, 0.3);
+    z-index: 10;
+}
+
+.menu-category.breakfast {
+    border-color: #FFB347;
+    background: linear-gradient(135deg, var(--warm-white) 0%, #FFF8DC 100%);
+}
+
+.menu-category.lunch {
+    border-color: #98FB98;
+    background: linear-gradient(135deg, var(--warm-white) 0%, var(--sage-green-pale) 100%);
+}
+
+.menu-category.appetizers {
+    border-color: #DDA0DD;
+    background: linear-gradient(135deg, var(--warm-white) 0%, #F8F0FF 100%);
+}
+
+.menu-category.desserts {
+    border-color: #F0A0A0;
+    background: linear-gradient(135deg, var(--warm-white) 0%, #FFF0F5 100%);
+}
+
+.menu-category.beverages {
+    border-color: #87CEEB;
+    background: linear-gradient(135deg, var(--warm-white) 0%, #F0F8FF 100%);
+}
+
+.menu-category.specials {
+    border-color: var(--gold-accent);
+    background: linear-gradient(135deg, var(--warm-white) 0%, #FFFACD 100%);
+    border-width: 4px;
+    border-style: dashed;
 }
 
 .menu-category h3 {
@@ -480,6 +544,75 @@ section {
     }
 }
 
+/* Equipment Section */
+.equipment {
+    background: linear-gradient(45deg, var(--sage-green-pale) 0%, var(--cream) 50%, var(--sage-green-light) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+}
+
+.equipment-item {
+    background-color: var(--warm-white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border: 2px solid var(--sage-green-light);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.equipment-item:hover {
+    transform: translateY(-8px) rotate(0deg) !important;
+    box-shadow: 0 15px 35px rgba(168, 197, 176, 0.4);
+}
+
+.equipment-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.equipment-item h4 {
+    color: var(--sage-green-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.equipment-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--text-light);
+}
+
+/* Haphazard equipment positioning */
+.equipment-item:nth-child(1) { transform: rotate(-3deg); }
+.equipment-item:nth-child(2) { transform: rotate(2deg) translateY(10px); }
+.equipment-item:nth-child(3) { transform: rotate(-1deg) translateY(-5px); }
+.equipment-item:nth-child(4) { transform: rotate(1.5deg); }
+.equipment-item:nth-child(5) { transform: rotate(-2deg) translateY(8px); }
+.equipment-item:nth-child(6) { transform: rotate(2.5deg) translateY(-10px); }
+.equipment-item:nth-child(7) { transform: rotate(-1.5deg); }
+.equipment-item:nth-child(8) { transform: rotate(1deg) translateY(12px); }
+.equipment-item:nth-child(9) { transform: rotate(-2.5deg) translateY(-8px); }
+.equipment-item:nth-child(10) { transform: rotate(1.8deg); }
+.equipment-item:nth-child(11) { transform: rotate(-1deg) translateY(6px); }
+.equipment-item:nth-child(12) { transform: rotate(2deg) translateY(-12px); }
+
+/* Special styling for dishwasher item (A.J.'s domain) */
+.equipment-item.dishwasher {
+    border-color: var(--gold-accent);
+    background: linear-gradient(135deg, var(--warm-white) 0%, #FFFACD 100%);
+    border-width: 3px;
+}
+
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -491,6 +624,18 @@ section {
     
     .menu-category {
         padding: 1.5rem;
+        transform: none !important;
+        margin: 0 !important;
+    }
+    
+    .equipment-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .equipment-item {
+        transform: none !important;
+        padding: 1rem;
     }
     
     .btn {
