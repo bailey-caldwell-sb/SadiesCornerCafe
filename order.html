@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends & Family Order - Sadie's Corner Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="order-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Sadie's Corner Cafe</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#menu" class="nav-link">Menu</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Form Section -->
+    <section class="order-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Friends & Family Order</h1>
+                <p>Place your order for pickup or delivery</p>
+            </div>
+
+            <form id="orderForm" class="order-form">
+                <!-- Customer Information -->
+                <div class="form-section">
+                    <h3>Your Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email Address *</label>
+                        <input type="email" id="customerEmail" name="customerEmail" required>
+                    </div>
+                </div>
+
+                <!-- Order Type -->
+                <div class="form-section">
+                    <h3>Order Type</h3>
+                    <div class="order-type-options">
+                        <label class="radio-option">
+                            <input type="radio" name="orderType" value="pickup" checked>
+                            <span class="radio-custom"></span>
+                            Pickup
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="orderType" value="delivery">
+                            <span class="radio-custom"></span>
+                            Delivery
+                        </label>
+                    </div>
+                    
+                    <div id="deliveryAddress" class="delivery-section" style="display: none;">
+                        <div class="form-group">
+                            <label for="address">Delivery Address *</label>
+                            <input type="text" id="address" name="address" placeholder="Street Address">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" placeholder="City">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipcode">ZIP Code *</label>
+                                <input type="text" id="zipcode" name="zipcode" placeholder="ZIP Code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Items -->
+                <div class="form-section">
+                    <h3>Select Your Items</h3>
+                    <div class="menu-categories">
+                        
+                        <!-- Breakfast Items -->
+                        <div class="menu-category">
+                            <h4>Breakfast Favorites</h4>
+                            <div class="menu-items">
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Classic Breakfast - $12.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Classic Breakfast</span>
+                                        <span class="item-price">$12.99</span>
+                                        <p class="item-description">Two eggs, bacon or sausage, hash browns, toast</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Pancake Stack - $9.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Pancake Stack</span>
+                                        <span class="item-price">$9.99</span>
+                                        <p class="item-description">Three fluffy pancakes with butter and syrup</p>
+                                    </div>
+                                </label>
+
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Breakfast Sandwich - $8.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Breakfast Sandwich</span>
+                                        <span class="item-price">$8.99</span>
+                                        <p class="item-description">Egg, cheese, and choice of meat on toasted bread</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Lunch Items -->
+                        <div class="menu-category">
+                            <h4>Lunch Specials</h4>
+                            <div class="menu-items">
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Sadie's Burger - $14.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Sadie's Burger</span>
+                                        <span class="item-price">$14.99</span>
+                                        <p class="item-description">Angus beef patty, lettuce, tomato, onion, fries</p>
+                                    </div>
+                                </label>
+
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Grilled Chicken Salad - $13.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Grilled Chicken Salad</span>
+                                        <span class="item-price">$13.99</span>
+                                        <p class="item-description">Mixed greens, grilled chicken, vegetables, dressing</p>
+                                    </div>
+                                </label>
+
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Club Sandwich - $11.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Club Sandwich</span>
+                                        <span class="item-price">$11.99</span>
+                                        <p class="item-description">Turkey, bacon, lettuce, tomato, mayo, chips</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Beverages -->
+                        <div class="menu-category">
+                            <h4>Beverages</h4>
+                            <div class="menu-items">
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Fresh Coffee - $2.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Fresh Coffee</span>
+                                        <span class="item-price">$2.99</span>
+                                        <p class="item-description">Freshly brewed house blend</p>
+                                    </div>
+                                </label>
+
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Fresh Orange Juice - $3.99">
+                                    <div class="item-info">
+                                        <span class="item-name">Fresh Orange Juice</span>
+                                        <span class="item-price">$3.99</span>
+                                        <p class="item-description">Freshly squeezed orange juice</p>
+                                    </div>
+                                </label>
+
+                                <label class="menu-item">
+                                    <input type="checkbox" name="menuItems" value="Soft Drink - $2.49">
+                                    <div class="item-info">
+                                        <span class="item-name">Soft Drink</span>
+                                        <span class="item-price">$2.49</span>
+                                        <p class="item-description">Coke, Pepsi, Sprite, or other sodas</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="form-section">
+                    <h3>Special Instructions</h3>
+                    <div class="form-group">
+                        <label for="specialInstructions">Additional Notes (Optional)</label>
+                        <textarea id="specialInstructions" name="specialInstructions" rows="4" placeholder="Any special requests, allergies, or cooking preferences..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-section">
+                    <button type="submit" class="btn btn-primary submit-btn">Submit Order</button>
+                    <p class="form-note">We'll contact you to confirm your order and provide pickup/delivery details.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Sadie's Corner Cafe</h3>
+                </div>
+                <div class="footer-info">
+                    <p>4503 Socastee Blvd, Unit E<br>Myrtle Beach, SC 29588</p>
+                    <p>Phone: (843) 831-0026</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="order-script.js"></script>
+</body>
+</html>
