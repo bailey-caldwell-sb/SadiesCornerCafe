@@ -395,9 +395,60 @@ section {
     align-items: start;
 }
 
-.contact-info {
-    display: grid;
-    gap: 2rem;
+.contact-info-consolidated {
+    display: flex;
+    justify-content: center;
+}
+
+.info-item-consolidated {
+    background-color: var(--warm-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--sage-green);
+    max-width: 400px;
+}
+
+.info-item-consolidated h4 {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    color: var(--sage-green);
+}
+
+.info-item-consolidated h4:first-child {
+    margin-top: 0;
+}
+
+.info-item-consolidated p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.hours-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.hours-info {
+    background-color: var(--sage-green-pale);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid var(--sage-green-light);
+}
+
+.hours-info h4 {
+    margin-bottom: 1rem;
+    color: var(--sage-green-dark);
+    font-size: 1.2rem;
+}
+
+.hours-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
 }
 
 .info-item {
@@ -485,7 +536,7 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hamburger {
+    .nav-toggle {
         display: flex;
     }
     
