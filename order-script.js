@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const orderForm = document.getElementById('orderForm');
     const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
+    const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
     const deliverySection = document.getElementById('deliveryAddress');
     const menuItems = document.querySelectorAll('input[name="menuItems"]');
     const addonItems = document.querySelectorAll('input[name*="-addons"]');
@@ -10,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const taxEl = document.getElementById('tax');
     const totalEl = document.getElementById('total');
     
-    const TAX_RATE = 0.115; // 11.5% tax rate for South Carolina
+    const TAX_RATES = {
+        cash: 0.08,    // 8% tax rate for cash
+        credit: 0.115  // 11.5% tax rate for credit
+    };
 
     // Handle order type change (pickup vs delivery)
     orderTypeRadios.forEach(radio => {
@@ -28,6 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('city').required = false;
                 document.getElementById('zipcode').required = false;
             }
+        });
+    });
+
+    // Handle payment method change
+    paymentMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateOrderSummary();
         });
     });
 
@@ -76,12 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        const tax = subtotal * TAX_RATE;
+        // Get selected payment method
+        const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        const paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'cash';
+        const taxRate = TAX_RATES[paymentMethod];
+        
+        const tax = subtotal * taxRate;
         const total = subtotal + tax;
         
-        // Update display
+        // Update display with payment method info
         subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        taxEl.textContent = `$${tax.toFixed(2)}`;
+        taxEl.textContent = `$${tax.toFixed(2)} (${paymentMethod === 'cash' ? '8%' : '11.5%'} ${paymentMethod})`;
         totalEl.textContent = `$${total.toFixed(2)}`;
     }
 
@@ -137,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             customerPhone: formData.get('customerPhone'),
             customerEmail: formData.get('customerEmail'),
             orderType: formData.get('orderType'),
+            paymentMethod: formData.get('paymentMethod'),
             address: formData.get('address') || '',
             city: formData.get('city') || '',
             zipcode: formData.get('zipcode') || '',
@@ -149,9 +166,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function sendOrderEmail(orderData) {
-        // Calculate totals
+        // Calculate totals with dynamic tax rate
         const subtotal = orderData.menuItems.reduce((sum, item) => sum + item.price, 0);
-        const tax = subtotal * TAX_RATE;
+        const taxRate = TAX_RATES[orderData.paymentMethod || 'cash'];
+        const tax = subtotal * taxRate;
         const total = subtotal + tax;
         
         // Format menu items for email
@@ -167,12 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
             customer_phone: orderData.customerPhone,
             customer_email: orderData.customerEmail,
             order_type: orderData.orderType,
+            payment_method: orderData.paymentMethod || 'cash',
             delivery_address: orderData.orderType === 'delivery' ? 
                 `${orderData.address}, ${orderData.city}, ${orderData.zipcode}` : 'N/A',
             menu_items: formattedItems,
             special_instructions: orderData.specialInstructions || 'None',
             subtotal: `$${subtotal.toFixed(2)}`,
-            tax: `$${tax.toFixed(2)}`,
+            tax: `$${tax.toFixed(2)} (${orderData.paymentMethod === 'cash' ? '8%' : '11.5%'})`,
             order_total: `$${total.toFixed(2)}`,
             order_date: new Date().toLocaleDateString(),
             order_time: new Date().toLocaleTimeString()
@@ -215,6 +234,7 @@ Phone: ${emailContent.customer_phone}
 Email: ${emailContent.customer_email}
 
 Order Type: ${emailContent.order_type}
+Payment Method: ${emailContent.payment_method}
 ${emailContent.order_type === 'delivery' ? `Delivery Address: ${emailContent.delivery_address}` : ''}
 
 Items Ordered:
@@ -224,7 +244,7 @@ Special Instructions: ${emailContent.special_instructions}
 
 Order Summary:
 Subtotal: ${emailContent.subtotal}
-Tax (11.5%): ${emailContent.tax}
+Tax: ${emailContent.tax}
 Total: ${emailContent.order_total}
 
 Order Date: ${emailContent.order_date} at ${emailContent.order_time}
