@@ -275,14 +275,14 @@ section {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
+    display: flex;
+    justify-content: center;
     align-items: start;
 }
 
 .about-text {
     text-align: center;
+    max-width: 800px;
 }
 
 .about-text h3 {
