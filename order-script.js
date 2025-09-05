@@ -225,7 +225,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function sendEmailViaService(emailContent) {
         // This is where you'd integrate with an actual email service
         // For now, we'll use a simple mailto link as fallback
-        const subject = encodeURIComponent(`New Friends & Family Order from ${emailContent.customer_name}`);
+        
+        // Parse the total amount from the order_total string (remove $ and convert to number)
+        const totalAmount = parseFloat(emailContent.order_total.replace('$', ''));
+        const largeOrderAlert = totalAmount > 100 ? 'LARGE ORDER - ' : '';
+        
+        const subject = encodeURIComponent(`${largeOrderAlert}New Friends & Family Order from ${emailContent.customer_name} - ${emailContent.order_total}`);
         const body = encodeURIComponent(`
 New Order Details:
 
