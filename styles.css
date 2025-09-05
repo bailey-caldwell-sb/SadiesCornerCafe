@@ -233,34 +233,18 @@ p {
     align-items: center;
 }
 
-.storefront-placeholder {
-    background: linear-gradient(135deg, var(--sage-green-light), var(--sage-green));
+.storefront-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     border-radius: 15px;
-    padding: 3rem 2rem;
-    text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 400px;
-    margin: 0 auto;
 }
 
-.storefront-placeholder:hover {
+.storefront-image:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-}
-
-.building-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.storefront-placeholder p {
-    color: var(--charcoal);
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin: 0;
-    line-height: 1.4;
 }
 
 /* Section Styles */
