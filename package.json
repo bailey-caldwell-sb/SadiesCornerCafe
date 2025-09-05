@@ -1,0 +1,33 @@
+{
+  "name": "sadies-corner-cafe-website",
+  "version": "1.0.0",
+  "description": "Official website for Sadie's Corner Cafe - A charming restaurant in Myrtle Beach, SC",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000",
+    "dev": "npx live-server --port=8000"
+  },
+  "keywords": [
+    "restaurant",
+    "cafe",
+    "myrtle-beach",
+    "food",
+    "dining",
+    "website"
+  ],
+  "author": "Sadie's Corner Cafe",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/saidescornercafe.com.git"
+  },
+  "homepage": "https://saidescornercafe.com",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
