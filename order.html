@@ -95,7 +95,7 @@
                             <h4>Breakfast</h4>
                             <div class="menu-items">
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Breakfast Platter - $10.00">
+                                    <input type="checkbox" name="menuItems" value="Breakfast Platter" data-price="10.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Breakfast Platter</span>
@@ -106,7 +106,7 @@
                                 </label>
                                 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Breakfast Sandwich - $7.00">
+                                    <input type="checkbox" name="menuItems" value="Breakfast Sandwich" data-price="7.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Breakfast Sandwich</span>
@@ -117,35 +117,51 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="French Toast - $7.00 (Add Meat $3.00)">
+                                    <input type="checkbox" name="menuItems" value="French Toast" data-price="7.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">French Toast</span>
                                             <span class="item-price">$7.00</span>
                                         </div>
-                                        <p class="item-description">Add Meat $3.00</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="French Toast-addons" value="Add Meat" data-price="3.00">
+                                                <span>Add Meat (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Biscuits and Sausage Gravy - $7.00 (Add Meat $3.00)">
+                                    <input type="checkbox" name="menuItems" value="Biscuits and Sausage Gravy" data-price="7.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Biscuits and Sausage Gravy</span>
                                             <span class="item-price">$7.00</span>
                                         </div>
-                                        <p class="item-description">Add Meat $3.00</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="Biscuits and Sausage Gravy-addons" value="Add Meat" data-price="3.00">
+                                                <span>Add Meat (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Muffin and Eggs - $7.00 (Add Meat $3.00)">
+                                    <input type="checkbox" name="menuItems" value="Muffin and Eggs" data-price="7.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Muffin and Eggs</span>
                                             <span class="item-price">$7.00</span>
                                         </div>
-                                        <p class="item-description">Grilled blueberry muffin with two eggs (scrambled or over). Add Meat $3.00</p>
+                                        <p class="item-description">Grilled blueberry muffin with two eggs (scrambled or over)</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="Muffin and Eggs-addons" value="Add Meat" data-price="3.00">
+                                                <span>Add Meat (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
                             </div>
@@ -156,7 +172,7 @@
                             <h4>Lunch</h4>
                             <div class="menu-items">
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Ham and Swiss Sandwich - $9.00">
+                                    <input type="checkbox" name="menuItems" value="Ham and Swiss Sandwich" data-price="9.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Ham and Swiss Sandwich</span>
@@ -167,7 +183,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="BLT - $10.00">
+                                    <input type="checkbox" name="menuItems" value="BLT" data-price="10.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">BLT</span>
@@ -178,7 +194,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Turkey and Pepperjack Sandwich - $9.00">
+                                    <input type="checkbox" name="menuItems" value="Turkey and Pepperjack Sandwich" data-price="9.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Turkey and Pepperjack Sandwich</span>
@@ -189,7 +205,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Chicken Bacon Ranch Sandwich - $11.00">
+                                    <input type="checkbox" name="menuItems" value="Chicken Bacon Ranch Sandwich" data-price="11.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Chicken Bacon Ranch Sandwich</span>
@@ -200,7 +216,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Shanghai Chicken Sandwich - $11.00">
+                                    <input type="checkbox" name="menuItems" value="Shanghai Chicken Sandwich" data-price="11.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Shanghai Chicken Sandwich</span>
@@ -211,7 +227,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Italian Chicken Sandwich - $11.00">
+                                    <input type="checkbox" name="menuItems" value="Italian Chicken Sandwich" data-price="11.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Italian Chicken Sandwich</span>
@@ -222,7 +238,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Turkey Club Sandwich - $11.00">
+                                    <input type="checkbox" name="menuItems" value="Turkey Club Sandwich" data-price="11.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Turkey Club Sandwich</span>
@@ -233,40 +249,55 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Cheeseburger - $11.00 (Add Bacon $3.00)">
+                                    <input type="checkbox" name="menuItems" value="Cheeseburger" data-price="11.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Cheeseburger</span>
                                             <span class="item-price">$11.00</span>
                                         </div>
-                                        <p class="item-description">Add Bacon $3.00</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="Cheeseburger-addons" value="Add Bacon" data-price="3.00">
+                                                <span>Add Bacon (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Garden Salad - $9.00 (Add Chicken $3.00)">
+                                    <input type="checkbox" name="menuItems" value="Garden Salad" data-price="9.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Garden Salad</span>
                                             <span class="item-price">$9.00</span>
                                         </div>
-                                        <p class="item-description">Add Chicken $3.00</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="Garden Salad-addons" value="Add Chicken" data-price="3.00">
+                                                <span>Add Chicken (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Caesar Salad - $9.00 (Add Chicken $3.00)">
+                                    <input type="checkbox" name="menuItems" value="Caesar Salad" data-price="9.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Caesar Salad</span>
                                             <span class="item-price">$9.00</span>
                                         </div>
-                                        <p class="item-description">Add Chicken $3.00</p>
+                                        <div class="item-options">
+                                            <label class="option-item">
+                                                <input type="checkbox" name="Caesar Salad-addons" value="Add Chicken" data-price="3.00">
+                                                <span>Add Chicken (+$3.00)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Mamma Linda's Picnic Salad - $10.00">
+                                    <input type="checkbox" name="menuItems" value="Mamma Linda's Picnic Salad" data-price="10.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Mamma Linda's Picnic Salad</span>
@@ -283,7 +314,7 @@
                             <h4>Extras</h4>
                             <div class="menu-items">
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Egg - $1.75">
+                                    <input type="checkbox" name="menuItems" value="Egg" data-price="1.75">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Egg</span>
@@ -293,7 +324,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="French Fries - $4.00">
+                                    <input type="checkbox" name="menuItems" value="French Fries" data-price="4.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">French Fries</span>
@@ -303,7 +334,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Bacon, Sausage, Pork Roll, Turkey Sausage, Chicken - $4.50">
+                                    <input type="checkbox" name="menuItems" value="Bacon, Sausage, Pork Roll, Turkey Sausage, Chicken" data-price="4.50">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Meat Add-Ons</span>
@@ -314,7 +345,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Onion Rings - $5.00">
+                                    <input type="checkbox" name="menuItems" value="Onion Rings" data-price="5.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Onion Rings</span>
@@ -324,7 +355,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Basket - $7.00">
+                                    <input type="checkbox" name="menuItems" value="Basket" data-price="7.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Basket</span>
@@ -335,7 +366,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Mozzarella Sticks - $9.00">
+                                    <input type="checkbox" name="menuItems" value="Mozzarella Sticks" data-price="9.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Mozzarella Sticks</span>
@@ -345,7 +376,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Side Salad - $5.50">
+                                    <input type="checkbox" name="menuItems" value="Side Salad" data-price="5.50">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Side Salad</span>
@@ -361,7 +392,7 @@
                             <h4>Beverages</h4>
                             <div class="menu-items">
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Can of Soda - $2.00">
+                                    <input type="checkbox" name="menuItems" value="Can of Soda" data-price="2.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Can of Soda</span>
@@ -371,7 +402,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Coffee - $3.00">
+                                    <input type="checkbox" name="menuItems" value="Coffee" data-price="3.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Coffee</span>
@@ -381,7 +412,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Specialty Iced Coffee - $5.00">
+                                    <input type="checkbox" name="menuItems" value="Specialty Iced Coffee" data-price="5.00">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Specialty Iced Coffee</span>
@@ -391,7 +422,7 @@
                                 </label>
 
                                 <label class="menu-item">
-                                    <input type="checkbox" name="menuItems" value="Bottled Water - $1.50">
+                                    <input type="checkbox" name="menuItems" value="Bottled Water" data-price="1.50">
                                     <div class="item-info">
                                         <div class="item-header">
                                             <span class="item-name">Bottled Water</span>
@@ -400,6 +431,25 @@
                                     </div>
                                 </label>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="form-section">
+                    <h3>Order Summary</h3>
+                    <div id="orderSummary" class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (8.5%):</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
                         </div>
                     </div>
                 </div>

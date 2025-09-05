@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
     const deliverySection = document.getElementById('deliveryAddress');
     const menuItems = document.querySelectorAll('input[name="menuItems"]');
+    const addonItems = document.querySelectorAll('input[name*="-addons"]');
     const submitBtn = document.querySelector('.submit-btn');
+    const subtotalEl = document.getElementById('subtotal');
+    const taxEl = document.getElementById('tax');
+    const totalEl = document.getElementById('total');
+    
+    const TAX_RATE = 0.085; // 8.5% tax rate for South Carolina
 
     // Handle order type change (pickup vs delivery)
     orderTypeRadios.forEach(radio => {
@@ -25,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle menu item selection visual feedback
+    // Handle menu item selection visual feedback and calculations
     menuItems.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const menuItem = this.closest('.menu-item');
@@ -33,9 +39,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuItem.classList.add('selected');
             } else {
                 menuItem.classList.remove('selected');
+                // Uncheck all addon items for this menu item
+                const addonCheckboxes = menuItem.querySelectorAll('input[name*="-addons"]');
+                addonCheckboxes.forEach(addon => {
+                    addon.checked = false;
+                });
             }
+            updateOrderSummary();
         });
     });
+    
+    // Handle addon item selection
+    addonItems.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateOrderSummary();
+        });
+    });
+    
+    // Update order summary with calculations
+    function updateOrderSummary() {
+        let subtotal = 0;
+        
+        // Calculate subtotal from selected menu items
+        menuItems.forEach(checkbox => {
+            if (checkbox.checked) {
+                const price = parseFloat(checkbox.dataset.price || 0);
+                subtotal += price;
+                
+                // Add addon prices for this item
+                const menuItem = checkbox.closest('.menu-item');
+                const addonCheckboxes = menuItem.querySelectorAll('input[name*="-addons"]:checked');
+                addonCheckboxes.forEach(addon => {
+                    const addonPrice = parseFloat(addon.dataset.price || 0);
+                    subtotal += addonPrice;
+                });
+            }
+        });
+        
+        const tax = subtotal * TAX_RATE;
+        const total = subtotal + tax;
+        
+        // Update display
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        taxEl.textContent = `$${tax.toFixed(2)}`;
+        totalEl.textContent = `$${total.toFixed(2)}`;
+    }
 
     // Handle form submission
     orderForm.addEventListener('submit', function(e) {
@@ -54,6 +102,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Collect form data
         const formData = new FormData(orderForm);
+        const selectedItemsWithAddons = [];
+        
+        // Build detailed order items with addons
+        selectedItems.forEach(item => {
+            const menuItem = item.closest('.menu-item');
+            const itemName = item.value;
+            const itemPrice = parseFloat(item.dataset.price || 0);
+            let totalItemPrice = itemPrice;
+            let itemDescription = itemName;
+            
+            // Check for addons
+            const addonCheckboxes = menuItem.querySelectorAll('input[name*="-addons"]:checked');
+            const addons = [];
+            addonCheckboxes.forEach(addon => {
+                const addonPrice = parseFloat(addon.dataset.price || 0);
+                addons.push(`${addon.value} (+$${addonPrice.toFixed(2)})`);
+                totalItemPrice += addonPrice;
+            });
+            
+            if (addons.length > 0) {
+                itemDescription += ` with ${addons.join(', ')}`;
+            }
+            
+            selectedItemsWithAddons.push({
+                name: itemName,
+                description: itemDescription,
+                price: totalItemPrice
+            });
+        });
+        
         const orderData = {
             customerName: formData.get('customerName'),
             customerPhone: formData.get('customerPhone'),
@@ -62,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
             address: formData.get('address') || '',
             city: formData.get('city') || '',
             zipcode: formData.get('zipcode') || '',
-            menuItems: selectedItems.map(item => item.value),
+            menuItems: selectedItemsWithAddons,
             specialInstructions: formData.get('specialInstructions') || ''
         };
 
@@ -71,8 +149,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function sendOrderEmail(orderData) {
-        // Calculate total (simplified - in real app you'd have proper pricing)
-        const total = calculateTotal(orderData.menuItems);
+        // Calculate totals
+        const subtotal = orderData.menuItems.reduce((sum, item) => sum + item.price, 0);
+        const tax = subtotal * TAX_RATE;
+        const total = subtotal + tax;
+        
+        // Format menu items for email
+        const formattedItems = orderData.menuItems.map(item => 
+            `${item.description} - $${item.price.toFixed(2)}`
+        ).join('\n');
         
         // Prepare email content
         const emailContent = {
@@ -84,9 +169,11 @@ document.addEventListener('DOMContentLoaded', function() {
             order_type: orderData.orderType,
             delivery_address: orderData.orderType === 'delivery' ? 
                 `${orderData.address}, ${orderData.city}, ${orderData.zipcode}` : 'N/A',
-            menu_items: orderData.menuItems.join('\n'),
+            menu_items: formattedItems,
             special_instructions: orderData.specialInstructions || 'None',
-            order_total: total,
+            subtotal: `$${subtotal.toFixed(2)}`,
+            tax: `$${tax.toFixed(2)}`,
+            order_total: `$${total.toFixed(2)}`,
             order_date: new Date().toLocaleDateString(),
             order_time: new Date().toLocaleTimeString()
         };
@@ -135,7 +222,10 @@ ${emailContent.menu_items}
 
 Special Instructions: ${emailContent.special_instructions}
 
-Estimated Total: ${emailContent.order_total}
+Order Summary:
+Subtotal: ${emailContent.subtotal}
+Tax (8.5%): ${emailContent.tax}
+Total: ${emailContent.order_total}
 
 Order Date: ${emailContent.order_date} at ${emailContent.order_time}
         `);
@@ -150,17 +240,8 @@ Order Date: ${emailContent.order_date} at ${emailContent.order_time}
         document.body.removeChild(tempLink);
     }
 
-    function calculateTotal(menuItems) {
-        let total = 0;
-        menuItems.forEach(item => {
-            // Extract price from item string (e.g., "Item Name - $12.99")
-            const priceMatch = item.match(/\$(\d+\.\d+)/);
-            if (priceMatch) {
-                total += parseFloat(priceMatch[1]);
-            }
-        });
-        return `$${total.toFixed(2)}`;
-    }
+    // Initialize order summary on page load
+    updateOrderSummary();
 
     function showMessage(message, type) {
         // Remove existing messages
