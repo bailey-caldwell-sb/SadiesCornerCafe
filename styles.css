@@ -312,6 +312,67 @@ section {
 }
 
 /* Menu Section */
+.menu-showcase {
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-image-container {
+    position: relative;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.menu-image-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+.menu-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.menu-image-container:hover .menu-image {
+    transform: scale(1.05);
+}
+
+.menu-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.menu-image-container:hover .menu-overlay {
+    transform: translateY(0);
+}
+
+.menu-overlay h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.menu-overlay p {
+    margin: 0;
+    opacity: 0.9;
+    color: white;
+}
+
 .menu-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
