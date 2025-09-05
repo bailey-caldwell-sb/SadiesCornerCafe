@@ -215,6 +215,22 @@
     margin: 0;
 }
 
+.menu-note {
+    text-align: center;
+    color: var(--sage-green-dark);
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+.disclaimer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+    opacity: 0.8;
+}
+
 /* Loading State */
 .submit-btn.loading {
     opacity: 0.7;
